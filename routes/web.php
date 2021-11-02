@@ -27,8 +27,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::get('/auth/google','App\Http\Controllers\Auth\GoogleAuthController@redirect')->name('auth.google');
-
 Route::get('/auth/google/callback','App\Http\Controllers\Auth\GoogleAuthController@callback');
+
+Route::get('/auth/token','App\Http\Controllers\Auth\AuthTokenController@getToken')->name('2fa.token');
+Route::post('/auth/token','App\Http\Controllers\Auth\AuthTokenController@postToken');
 
 
 Route::get('/secret', function () {

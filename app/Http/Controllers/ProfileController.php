@@ -31,7 +31,7 @@ class ProfileController extends Controller
 
       $data=  $request->validate([
             'type'=>'required|in:sms,off',
-            'phone'=>'required_unless:type,off||min:11|max:11'
+            'phone'=>'required_unless:type,off||min:11|max:11|unique:users'
         ]);
 
 
@@ -40,6 +40,7 @@ class ProfileController extends Controller
       {
           if($request->user()->phone !== $data['phone'])
           {
+
 
             $code=ActiveCode::GenerateCode(auth()->user());
 

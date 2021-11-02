@@ -38,7 +38,6 @@ class ActiveCode extends Model
         }else
         {
 
-
         do{
 
             $code=mt_rand(10000,999999);
@@ -68,7 +67,8 @@ class ActiveCode extends Model
     private function geAliveCodeForUser($user)
     {
 
-        return $user->activeCode()->where('expired_at','>',now())->first();
+        return $user->activeCode()->where('expired_at','>',now() )->first();
+
     }
 
 
